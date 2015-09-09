@@ -11,6 +11,6 @@ There are two ways you can use this workaround:
 
 4. Configure the frequency per your requirements.
 
-5. Select "Start a program" and point it to the "RemoveLyncCerts" shortcut in the repo. 
+5. Select "Start a program" and point it to the "RemoveLyncCerts" shortcut file. 
 
 For more information on this issue visit: https://social.technet.microsoft.com/Forums/lync/en-US/89d2edef-b6ca-4594-9901-1fbbfed65ab4/the-server-certificate-store-for-holding-partner-certificates-is-full?forum=ocsedge
