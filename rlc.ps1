@@ -1,21 +1,19 @@
 $Date = date 
+$LogDir = "C:\RemoveLyncCerts\rlc_log.txt"
 
-Write-Host "$Date - Starting script..."
+# Takes an output of the certs in the store
+Write-Host "$Date - Dumping the output of the key store to the log file..." >> $LogDir
+Get-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Cryptography\Services\RtcSrv\SystemCertificates\Accepted Certificates\Certificates -name * >> $LogDir
 
-# Changes into the directory of the Lync Accepted Certificates store
-Write-Host "$Date - Navigating to the Lync cert store..."; 
-set-location 'HKLM:\SOFTWARE\Microsoft\Cryptography\Services\RtcSrv\SystemCertificates\Accepted Certificates\Certificates'
-
-# Removes all of the keys
-Write-Host "$Date - Removing Lync certs..."
-remove-item * 
+# Removes all of the Lync certs
+Write-Host "$Date - Removing the certs..." >> $LogDir
+Remove-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Cryptography\Services\RtcSrv\SystemCertificates\Accepted Certificates\Certificates -name * >> $LogDir
 
 # Restarts the Lync services in the correct order
-Write-Host "$Date - Stopping Lync services..." 
+Write-Host "$Date - Stopping Lync services..." >> $LogDir
 Get-CsWindowsService | Stop-CsWindowsService
 
-Write-Host "$Date - Starting Lync services..." 
+Write-Host "$Date - Starting Lync services..." >> $LogDir
 Get-CsWindowsService | Start-CsWindowsService
 
-# Generates a simple log file upon completion
-Write-Output "$Date - Script completed!" > C:\RemoveLyncCerts\rlc_log.txt
+Write-Output "$Date - Script completed!" >> $LogDir 
