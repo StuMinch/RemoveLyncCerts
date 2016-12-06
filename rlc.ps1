@@ -1,6 +1,7 @@
 # Imports the Lync specific Powershell modules
 Import-Module 'C:\Program Files\Common Files\Microsoft Lync Server 2010\Modules\Lync\Lync.psd1'
 
+$Date = date
 $LogDir = "C:\RemoveLyncCerts\rlc_log.txt"
 $CertPath = "HKLM:\SOFTWARE\Microsoft\Cryptography\Services\RtcSrv\SystemCertificates\Accepted Certificates\Certificates"
 
@@ -15,5 +16,4 @@ Get-CsWindowsService | Stop-CsWindowsService
 Write-Host "Starting Lync services..."
 Get-CsWindowsService | Start-CsWindowsService
 
-date >> $LogDir
-Write-Output "Script completed!" >> $LogDir 
+Write-Output "Script completed on $Date" >> $LogDir 
