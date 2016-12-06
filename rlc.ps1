@@ -1,19 +1,19 @@
+# Imports the Lync specific Powershell modules
+Import-Module 'C:\Program Files\Common Files\Microsoft Lync Server 2010\Modules\Lync\Lync.psd1'
+
 $LogDir = "C:\RemoveLyncCerts\rlc_log.txt"
 $CertPath = "HKLM:\SOFTWARE\Microsoft\Cryptography\Services\RtcSrv\SystemCertificates\Accepted Certificates\Certificates"
 
-# Takes an output of the certs in the store
-Write-Host "Dumping the output of the key store to the log file..." >> $LogDir
-Get-ItemProperty -path $CertPath\* -name * >> $LogDir
-
 # Removes all of the Lync certs
 Write-Host "Removing the certs..." >> $LogDir
-Remove-ItemProperty -path $CertPath\* -name * >> $LogDir
+Remove-ItemProperty -path $CertPath\* -name *
 
 # Restarts the Lync services in the correct order
-Write-Host "Stopping Lync services..." >> $LogDir
+Write-Host "Stopping Lync services..."
 Get-CsWindowsService | Stop-CsWindowsService
 
-Write-Host "Starting Lync services..." >> $LogDir
+Write-Host "Starting Lync services..."
 Get-CsWindowsService | Start-CsWindowsService
 
+date >> $LogDir
 Write-Output "Script completed!" >> $LogDir 
