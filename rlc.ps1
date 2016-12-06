@@ -6,7 +6,7 @@ $LogDir = "C:\RemoveLyncCerts\rlc_log.txt"
 $CertPath = "HKLM:\SOFTWARE\Microsoft\Cryptography\Services\RtcSrv\SystemCertificates\Accepted Certificates\Certificates"
 
 # Removes all of the Lync certs
-Write-Host "Removing the certs..." >> $LogDir
+Write-Host "Removing the certs..."
 Remove-ItemProperty -path $CertPath\* -name *
 
 # Restarts the Lync services in the correct order
