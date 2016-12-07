@@ -5,12 +5,16 @@ There are two ways you can use this workaround:
 
 1. Copy the rlc.ps1 script to your server and run it manually.
 
-2. Clone the RemoveLyncCerts repo to the C:\ drive of your Edge server (or to your local desktop and copy the files manually to the Lync Edge server).
+Or:
 
-3. Open Task Scheduler and select "Create Basic Task..."
+2. Clone the RemoveLyncCerts repo.
 
-4. Configure the frequency per your requirements.
+- Open Task Scheduler and select "Create Basic Task..."
 
-5. Select "Start a program" and point it to the "RemoveLyncCerts" shortcut file. 
+- Configure the frequency per your requirements.
+
+- Be sure to check the box "Run with highest privileges" during setup.
+
+- Select "Start a program" and point it to the "rc.ps1" script. Make sure Powershell is set as the default application to run .ps1 files. If it is set to notepad.exe, then Task Scheduler will launch notepad.exe instead of the actual script.
 
 For more information on this issue visit: https://social.technet.microsoft.com/Forums/lync/en-US/89d2edef-b6ca-4594-9901-1fbbfed65ab4/the-server-certificate-store-for-holding-partner-certificates-is-full?forum=ocsedge
