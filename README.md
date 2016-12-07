@@ -3,11 +3,13 @@ Due to a limitation in Microsoft Lync Server 2010 I developed this workaround in
 
 There are two ways you can use this workaround:
 
-1. Copy the rlc.ps1 script to your server and run it manually.
+Option 1:
 
-Or:
+- Copy the rlc.ps1 script to your server and run it manually.
 
-2. Clone the RemoveLyncCerts repo.
+Option 2:
+
+- Clone the RemoveLyncCerts repo.
 
 - Open Task Scheduler and select "Create Basic Task..."
 
